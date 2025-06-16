@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-
+import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <>
@@ -28,30 +28,48 @@ const Login = () => {
           <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
             <h2 className="text-3xl font-bold mb-6 text-gray-800">Login</h2>
             <form className="space-y-5">
-              <div>
+                {/* Username Field */}
+                <div>
                 <label className="block mb-1 text-sm font-medium text-gray-700">Username</label>
                 <input
-                  type="text"
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Enter your Username"
+                    type="text"
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter your Username"
                 />
-              </div>
-              <div>
+                </div>
+
+                {/* Password Field */}
+                <div>
                 <label className="block mb-1 text-sm font-medium text-gray-700">Password</label>
                 <input
-                  type="password"
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Enter your password"
+                    type="password"
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter your password"
                 />
-              </div>
-              <button
+                {/* Forgot Password */}
+                <p className="text-sm text-blue-600 hover:underline mt-1 cursor-pointer ">
+                    Forgot your password?
+                </p>
+                </div>
+
+                {/* Login Button */}
+                <button
                 type="submit"
                 className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-              >
+                >
                 Login
-              </button>
+                </button>
+
+                {/* Signup Link */}
+                <p className="text-sm text-gray-600 text-center mt-4">
+                No account?{" "}
+                <Link to='/register' className="text-blue-600 hover:underline cursor-pointer">
+                    Please signup
+                </Link>
+                </p>
             </form>
-          </div>
+            </div>
+
         </div>
       </div>
       <Footer />
