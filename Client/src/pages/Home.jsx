@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { FaBook, FaUsers, FaLaptop } from "react-icons/fa";
 
 const HomePage = () => {
@@ -10,7 +11,7 @@ const HomePage = () => {
       <div
         className="h-screen bg-cover bg-center flex items-center justify-center text-center relative"
         style={{
-          backgroundImage: "url('/images/main-bg.jpg')", // ✅ note: public folder use karo
+          backgroundImage: "url('/images/main-bg.jpg')",
         }}
       >
         <div className="absolute inset-0"></div>
@@ -49,6 +50,35 @@ const HomePage = () => {
         </div>
       </div>
     </div>
+        <div className="bg-gray-100 py-16 px-4 md:px-10">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10">
+        {/* Left Image */}
+        <div className="w-full md:w-1/2">
+          <img
+            src="/images/about-main.jpg" // ✅ Make sure image is in public/images/
+            alt="Library"
+            className="rounded-xl shadow-lg w-full h-auto object-cover"
+          />
+        </div>
+
+        {/* Right Content */}
+        <div className="w-full md:w-1/2">
+          <h2 className="text-3xl font-bold mb-4 text-gray-800">About the Library</h2>
+          <p className="text-gray-600 text-lg leading-relaxed mb-4">
+            SmartLib is a modern digital library management system designed to simplify
+            the process of managing books, users, and transactions. It provides a
+            user-friendly interface for students and staff to easily access and manage
+            resources.
+          </p>
+          <p className="text-gray-600 text-lg leading-relaxed">
+            Our goal is to make libraries smarter by integrating technology, allowing for
+            real-time tracking of issued books, reminders, digital catalogs, and efficient
+            management of records.
+          </p>
+        </div>
+      </div>
+    </div>
+    <Footer/>
     </>
   );
 };

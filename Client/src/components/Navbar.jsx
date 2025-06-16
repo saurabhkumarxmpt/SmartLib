@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="w-full fixed top-0 left-0 z-50 bg-transparent backdrop-blur-md px-6 py-4">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         {/* Left side logo */}
-        <h1 className="text-2xl font-bold text-white">SmartLib</h1>
+        <h1 className="text-2xl font-bold text-blue-600">SmartLib</h1>
 
         {/* Right side buttons */}
         <div className="space-x-4">
