@@ -1,8 +1,34 @@
-import React from "react";
+import { useState } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import { Link } from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
+import axios from '../../Axios';
+
+
 const Register = () => {
+
+    const navigate=useNavigate();
+    const[user,setUser]=useState({});
+
+    const handleValueChange=(e)=>{
+        const name=e.target.name;
+        const value=e.target.value;
+        setUser((prevUser)=>({...prevUser,[name]:value}));
+    }
+
+    const handleSubmit=async(e)=>{
+      e.preventDefault();
+      try{
+        await axios.post('/auth/register',user);
+        alert('Your registration was successful! Please log in now.');
+        navigate('/login');
+      }catch(err){
+        console.error(err.message);
+        alert('Somthing Went Wrong');
+      }
+    }
+
+
   return (
     <>
       <Navbar />
@@ -11,7 +37,7 @@ const Register = () => {
           <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">
             Student Registration
           </h2>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
             {/* Full Name */}
             <div>
               <label className="block mb-1 text-sm font-medium text-gray-700">
@@ -19,6 +45,9 @@ const Register = () => {
               </label>
               <input
                 type="text"
+                name="name"
+                value={user.name}
+                onChange={handleValueChange}
                 placeholder="Enter your name"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -31,6 +60,9 @@ const Register = () => {
               </label>
               <input
                 type="text"
+                name="userName"
+                value={user.userName}
+                onChange={handleValueChange}
                 placeholder="username123"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -43,6 +75,9 @@ const Register = () => {
               </label>
               <input
                 type="text"
+                name="fatherName"
+                value={user.fatherName}
+                onChange={handleValueChange}
                 placeholder="Father's full name"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -55,6 +90,9 @@ const Register = () => {
               </label>
               <input
                 type="email"
+                name="email"
+                value={user.email}
+                onChange={handleValueChange}
                 placeholder="you@example.com"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -67,6 +105,9 @@ const Register = () => {
               </label>
               <input
                 type="tel"
+                name="mobile"
+                value={user.mobile}
+                onChange={handleValueChange}
                 placeholder="10-digit number"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -79,6 +120,9 @@ const Register = () => {
               </label>
               <input
                 type="text"
+                name="className"
+                value={user.className}
+                onChange={handleValueChange}
                 placeholder="e.g. BCA, B.Tech"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -91,6 +135,9 @@ const Register = () => {
               </label>
               <input
                 type="text"
+                name="year"
+                value={user.year}
+                onChange={handleValueChange}
                 placeholder="e.g. 2nd Year / 4th Sem"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -103,6 +150,9 @@ const Register = () => {
               </label>
               <input
                 type="password"
+                name="password"
+                value={user.password}
+                onChange={handleValueChange}
                 placeholder="Create a password"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
