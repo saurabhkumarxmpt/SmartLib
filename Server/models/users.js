@@ -8,7 +8,7 @@ const userSchema=new mongoose.Schema({
     userName:{
         type:String,
         required:true,
-        uniqe:true
+        unique:true
     },
     fatherName:String,
     email:{
@@ -21,6 +21,11 @@ const userSchema=new mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    role:{
+        type:String,
+        enum: ['admin', 'staff', 'student'],
+        default:'student'
     }
 
 },{timestamps:true});
